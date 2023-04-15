@@ -6,11 +6,12 @@ Usage:
    vad --version
 
 Options:
-   -i FILE, --input-wav=FILE   WAVE file for voice activity detection
-   -o FILE, --output-vad=FILE  Label file with the result of VAD
-   -w FILE, --output-wav=FILE  WAVE file with silences cleared
-   -0 FLOAT, --alfa0=FLOAT     Marge sobre P0 per determinar el llindar d'un V/S [default: 5]
-      
-   -v, --verbose  Show debug information
-   -h, --help     Show this screen
-   --version      Show the version of the project
+   -i FILE, --input-wav=FILE                    WAVE file for voice activity detection
+   -o FILE, --output-vad=FILE                   Label file with the result of VAD
+   -w FILE, --output-wav=FILE                   WAVE file with silences cleared  
+   -1 FLOAT, --alfa1=FLOAT                      Margen sobre P0 para determinar el umbral 1 de un V/S [default: 1.83]
+   -2 FLOAT, --alfa2=FLOAT                      Margen sobre P0 para determinar el umbral 2 de un V/S [default: 7.67]
+   -n INT, --N_tramas_ini=INT                   Número de frames per calcular potencia inicial [default: 10]     
+   -v, --verbose                                Show debug information
+   -h, --help                                   Show this screen
+   --version                                    Show the version of the project
