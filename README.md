@@ -1,4 +1,3 @@
-a
 PAV - P2: detección de actividad vocal (VAD)
 ============================================
 
@@ -137,13 +136,14 @@ Ejercicios
   continuación, una captura de `wavesurfer` en la que se vea con claridad la señal temporal, el contorno de
   potencia y la tasa de cruces por cero, junto con el etiquetado manual de los segmentos.
 
+![image](https://user-images.githubusercontent.com/125367047/232320162-f7b1a460-24e4-4a2f-9d8f-1bf5d696b3a3.png)
 
 
 - A la vista de la gráfica, indique qué valores considera adecuados para las magnitudes siguientes:
 
 	* Incremento del nivel potencia en dB, respecto al nivel correspondiente al silencio inicial, para
 	  estar seguros de que un segmento de señal se corresponde con voz.
-
+		
 	* Duración mínima razonable de los segmentos de voz y silencio.
 
 	* ¿Es capaz de sacar alguna conclusión a partir de la evolución de la tasa de cruces por cero?
