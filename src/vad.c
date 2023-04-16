@@ -74,9 +74,9 @@ VAD_DATA *vad_open(float rate, float alfa1, float alfa2, unsigned int N_tramas_i
   vad_data->num_MS = 0; // Numero de tramas en estado MAYBE_SILENCE
   vad_data->num_MV = 0; // Numero de tramas en estado MAYBE_VOICE
 
-  vad_data->max_MS = 9;  // Número máximo de frames en qué decidimos si pasamos de V a S
-  vad_data->max_MV = 67; // Número máximo de frames en qué decidimos si pasamos de S a V
-  vad_data->min_S = 6;   // Duración mínima de SILENCE
+  vad_data->max_MS = 12;  // Número máximo de frames en qué decidimos si pasamos de V a S
+  vad_data->max_MV = 74; // Número máximo de frames en qué decidimos si pasamos de S a V
+  vad_data->min_S = 8;   // Duración mínima de SILENCE
   vad_data->min_V = 0;   // Duración mínima de VOICE
 
   return vad_data;
