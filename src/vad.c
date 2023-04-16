@@ -68,8 +68,8 @@ VAD_DATA *vad_open(float rate, float alfa1, float alfa2, unsigned int N_tramas_i
   vad_data->k0 = 0;
   vad_data->k1 = 0;
 
-  vad_data->alfa1 = 1.83;
-  vad_data->alfa2 = 7.67;
+  vad_data->alfa1 = alfa1;
+  vad_data->alfa2 = alfa2;
 
   vad_data->num_MS = 0; // Numero de tramas en estado MAYBE_SILENCE
   vad_data->num_MV = 0; // Numero de tramas en estado MAYBE_VOICE
