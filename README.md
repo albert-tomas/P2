@@ -143,25 +143,40 @@ Ejercicios
 
 	* Incremento del nivel potencia en dB, respecto al nivel correspondiente al silencio inicial, para
 	  estar seguros de que un segmento de señal se corresponde con voz.
-		
+	> Si decidimos el incremento basándonos en las gráficas obtenidas con el wavesurfer, teniendo en cuenta la baja exactitud de la medida, inicialmente definimos que sobre los 30 dBs podemos considerar la señal voz. De todas formas, posteriormente durante la práctica hemos podido establecer umbrales más precisos.
+
 	* Duración mínima razonable de los segmentos de voz y silencio.
+	> A partir del análisis del fichero .wav llegamos a la conclusión que aproximadamente los segmentos de voz duran un mínimo de 0,5 segundos mientras que los de silencio alrededor de los 0,2 segundos.
 
 	* ¿Es capaz de sacar alguna conclusión a partir de la evolución de la tasa de cruces por cero?
+	> Concorde a lo que hemos visto en las clases teóricas, vemos que el valor de tasa de cruces por cero incrementa al haber silencios y decrementa (estabilizándose) al haber voz, pudiendo reconocer cuando tenemos voz o silencio en función de este dato.
 
 
 ### Desarrollo del detector de actividad vocal
 
 - Complete el código de los ficheros de la práctica para implementar un detector de actividad vocal en
   tiempo real tan exacto como sea posible. Tome como objetivo la maximización de la puntuación-F `TOTAL`.
+  > Con el código implementado, obtenemos un primer resultado con vad_evaluation.pl con el próposito de concretar el valor de 'Recall', que nos indica la proporción de muestras que detecta nuestro algoritmo respecto al Ground Truth. Además, 'Precision' nos indica la proporción de las muestras detectadas por nuestro algoritmo respecto al conjunto de muestras detectadas de la máquina de estados. Haciendo la media harmónica de los parámetros de 'Recall' y 'Precision' obtenemos la medida F-score. Como observamos en la siguiente captura obtenemos una F-score de 91,242%.
+
+![image](https://user-images.githubusercontent.com/125367047/232337024-2b0dadd8-57e0-452c-a18b-d348dc894aa2.png)
+
 
 - Inserte una gráfica en la que se vea con claridad la señal temporal, el etiquetado manual y la detección
-  automática conseguida para el fichero grabado al efecto. 
+  automática conseguida para el fichero grabado al efecto.
+  > A continuación se muestra nuestra señal, siendo el .lab superior el etiquetado manual, y el inferior el de detección automática.
+
+![image](https://user-images.githubusercontent.com/125367047/232337677-f34d4299-854e-48cd-b8d8-8272f1e2b4d7.png)
 
 - Explique, si existen. las discrepancias entre el etiquetado manual y la detección automática.
+  > En la imagen observamos como el algoritmo detecta con más precisión los tramos tanto de voz como de silencio, aunque vemos como algunos sonidos sordos los ha confundido con silencios.
 
 - Evalúe los resultados sobre la base de datos `db.v4` con el script `vad_evaluation.pl` e inserte a 
   continuación las tasas de sensibilidad (*recall*) y precisión para el conjunto de la base de datos (sólo
   el resumen).
+  > Para el conjunto de señales de nuestra base de datos, tras haber optimizado todos los parámetros aplicados en nuestro algoritmo, hemos obtenido una F-Score de 93,857%.
+
+![image](https://user-images.githubusercontent.com/125367047/232338103-c2424415-f102-4033-a712-da7220e13eb4.png)
+
 
 
 ### Trabajos de ampliación
@@ -171,11 +186,19 @@ Ejercicios
 - Si ha desarrollado el algoritmo para la cancelación de los segmentos de silencio, inserte una gráfica en
   la que se vea con claridad la señal antes y después de la cancelación (puede que `wavesurfer` no sea la
   mejor opción para esto, ya que no es capaz de visualizar varias señales al mismo tiempo).
+  > En la imagen adjunta a continuación hemos representado la señal de voz inicial en la parte superior, y la señal tras haber aplicado el algoritmo en la inferior.
+
+![image](https://user-images.githubusercontent.com/125367047/232338230-3fb2714b-ebc4-4b1f-8249-beef14d634ea.png)
+
 
 #### Gestión de las opciones del programa usando `docopt_c`
 
 - Si ha usado `docopt_c` para realizar la gestión de las opciones y argumentos del programa `vad`, inserte
   una captura de pantalla en la que se vea el mensaje de ayuda del programa.
+  > Hemos realizado la gestión de argumentos vía `docopt_c`, añadiendo la gestión de 3 parámetros: alfa1, alfa2, y el número de tramas iniciales (en ese respectivo orden). De manera que si ejecutamos `scripts/run_vad.sh 2 5 10` estaremos asignando los valores alfa1 = 2, alfa2 = 5, N_tramas_ini = 10.
+
+![image](https://user-images.githubusercontent.com/125367047/232338558-fa9b25aa-d346-4e99-b3d8-5ebf4d88208f.png)
+
 
 
 ### Contribuciones adicionales y/o comentarios acerca de la práctica
@@ -192,7 +215,3 @@ Ejercicios
 Recuerde comprobar que el repositorio cuenta con los códigos correctos y en condiciones de ser 
 correctamente compilados con la orden `meson bin; ninja -C bin`. El programa generado (`bin/vad`) será
 el usado, sin más opciones, para realizar la evaluación *ciega* del sistema.
-
-> Comentari de proba
-
-Comentari
